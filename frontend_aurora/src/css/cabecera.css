@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+.containerTitle {
+    height: 48%;
+    width: 100%;
+    background-color: #161a23;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerTitle h1 {
+    color: #AC4DF6;
+    font-family: 'Aladin', sans-serif;
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+.lineDivision{
+    margin-left: 0.5%;
+    width: 99%;
+    height: 2%;
+    background-color: #fff;
+    border-radius: 2%;
+}
+
+
+.containerNameBuscador{
+    width: 27%;
+    height: 100%;
+    background-color: #161a23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto Condensed", sans-serif;
+    letter-spacing: 1px;
+    font-size: 24px;
+}
