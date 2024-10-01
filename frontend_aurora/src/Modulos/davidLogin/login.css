@@ -1,0 +1,175 @@
+.MainContainer{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(26, 26, 26);
+    display: flex;
+    justify-content: space-between;
+}
+
+.ExplorerContainer{
+    height: 100%;
+    width: 15%;
+    display: flex;
+    padding: 10px;
+    border: 15%;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: rgb(50, 0, 104);
+}
+
+.UsuarioContainer{
+    height: 50%;
+    justify-content: space-between;
+}
+
+.UserContDatos {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.OptionsContainer{
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.Tittle{
+    color: white;
+    font-size: 80px;
+    font-weight: 100%;
+    align-self: auto;
+    padding: 10px;
+    font-family: 'Aladin', sans-serif;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 24px;
+    font-style: normal;
+}
+
+.TextExit{
+    color: rgb(202, 0, 0);
+    font-size: 16px;
+    font-family: 'Aladin', sans-serif;
+}
+
+.TextLight {
+    font-size: 16px;
+    font-family: 'Aladin', sans-serif;
+    color: white;
+}
+
+.TextDesc{
+    font-size: 13px;
+    font-family: 'Aladin', sans-serif;
+    color: white;
+    opacity: .85;
+}
+
+.TextName{
+    font-size: 19px;
+    font-family: 'Aladin', Bold;
+    color: white;
+}
+
+.Divider {
+    align-self: center;
+    border: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #d1d1d1;
+    margin: 6px 0;
+    opacity: 0.85;
+}
+
+.Hijo2{
+    height: 100%;
+    width: 85%;
+    background-color: coral;
+}
+
+
+/* Contenedor del switch */
+.switch {
+    margin-left: auto;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+  }
+  
+  /* Ocultar el input de checkbox original */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* El slider, que representa el botón */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Color cuando está apagado */
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  /* Círculo dentro del slider */
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  /* Cambiar el fondo del slider cuando está activado */
+  input:checked + .slider {
+    background-color: #004074; /* Color cuando está activado */
+  }
+  
+  /* Mover el círculo dentro del slider cuando está activado */
+  input:checked + .slider:before {
+    transform: translateX(36px);
+  }
+  
+  /* Opción opcional para darle un estilo de "toggle" redondeado */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+
+#settings-icon {
+    color: white;
+    font-size: 16px;
+    margin-right: 15px;
+}  
+
+#settings-ExitIcon {
+    color: rgb(202, 0, 0);
+    font-size: 16px;
+    margin-right: 15px;
+}  
