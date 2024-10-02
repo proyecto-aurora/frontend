@@ -1,0 +1,42 @@
+.containerHeader {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: #16161d;
+}
+
+.containerBuscador {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5%;
+}
+
+.buscador {
+    align-self: center;
+    align-content: center;
+    height: 100%;
+    width: 75%;
+    background-color: #e9ecf1;
+    border-radius: 25pc;
+}
+
+.textoBuscador{
+    color: #9f9fa0;
+}
+
+.containerListAreas{
+    height: 60%;
+    width: 100%;
+    background-color: #fff;
+}
+
+.paginacion{
+    align-content: end;
+    justify-content: center;
+}

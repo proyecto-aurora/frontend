@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cabecera from "../cabesera/cabesera";
-import TituloBuscador from "../cabesera/tituloBuscador";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa"; // Iconos de ordenación
+import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa"; 
 
 const Usuarios = ({ nombre }) => {
     const [name, setNombre] = useState(nombre);
@@ -53,7 +52,6 @@ const Usuarios = ({ nombre }) => {
                 <header className="containerHeader">
                     <Cabecera nombre={name} />
                     <article className="containerBuscador">
-                        <TituloBuscador nombre={name} />
                         <section className="buscador">
 
                         </section>

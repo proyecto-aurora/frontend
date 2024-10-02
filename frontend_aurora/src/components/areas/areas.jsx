@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Cabecera from "../cabesera/cabesera";
-import TituloBuscador from "../cabesera/tituloBuscador";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa"; // Iconos de ordenación
-import "../../css/areas.css"
+import "../../css/areas.css";
 
 const API_URL = "http://172.27.90.226:8000/api/area/"
 
@@ -130,9 +130,8 @@ const Areas = ({ nombre }) => {
                 <header className="containerHeader">
                     <Cabecera nombre={nombre} />
                     <article className="containerBuscador">
-                        <TituloBuscador nombre={nombre} />
                         <section className="buscador">
-
+                            <li className="textoBuscador">bas bavs</li>
                         </section>
                     </article>
                 </header>
@@ -192,7 +191,7 @@ const Areas = ({ nombre }) => {
                         )}
                     </section>
                 {!loading && !error && (
-                    <nav aria-label="Paginacion de areas">
+                    <nav aria-label="Paginacion de areas" >
                         <ul className="pagination justify-content-center">
                             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                                 <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)} aria-label="Anterior">
@@ -200,7 +199,7 @@ const Areas = ({ nombre }) => {
                                 </button>
                             </li>
                             {getPaginationButtons()}
-                            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
                                 <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)} aria-label="Siguiente">
                                     Siguiente
                                 </button>
