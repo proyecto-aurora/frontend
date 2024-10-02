@@ -1,10 +1,4 @@
 .containerFullAreas{
-    height: 100%;
+    height: auto;
     width: 100%;
-}
-
-.containerListAreas{
-    height: 60%;
-    width: 100%;
-    background-color: #fff;
 }
