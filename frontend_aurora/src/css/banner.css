@@ -4,7 +4,7 @@
     height: 100%;
     width: 16%;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     background-color: #320068;
@@ -37,7 +37,7 @@
 }
 
 .avatar {
-    background-color: #1d0933dd;
+    background-color: #320068;
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -123,7 +123,7 @@
 
 /**********************************************************/
 .settingsContainer {
-    height: 32%;
+    height: auto !important;
     width: 100%;
     display: flex;
     align-items: center;

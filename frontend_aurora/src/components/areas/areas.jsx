@@ -131,13 +131,13 @@ const Areas = ({ nombre }) => {
                     <Cabecera nombre={nombre} />
                     <article className="containerBuscador">
                         <section className="buscador">
-                            <li className="textoBuscador">bas bavs</li>
+                            <span className="textoBuscador">Buscar {nombre}</span>
                         </section>
                     </article>
                 </header>
-                <section className="containerListAreas">
+                <section className="containerList">
                     {error && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alerta" role="alert">
                             {error}
                         </div>
                     )}
@@ -148,7 +148,7 @@ const Areas = ({ nombre }) => {
                             </div>
                         </div>
                     ) : (
-                        <table className="table table-striped" aria-label="Lista de areas">
+                        <table className="tabla" aria-label="Lista de areas">
                             <thead>
                                 <tr>
                                     {columns.map(column => (
@@ -182,7 +182,7 @@ const Areas = ({ nombre }) => {
                             ) : (
                                 <tr>
                                     <td colSpan={columns.length} className="text-center">
-                                        No hay areas disponibles.
+                                        No hay {nombre} disponibles.
                                     </td>
                                 </tr>
                             )}
@@ -191,7 +191,7 @@ const Areas = ({ nombre }) => {
                         )}
                     </section>
                 {!loading && !error && (
-                    <nav aria-label="Paginacion de areas" >
+                    <nav aria-label="Paginacion de areas" className="paginacion">
                         <ul className="pagination justify-content-center">
                             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                                 <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)} aria-label="Anterior">
