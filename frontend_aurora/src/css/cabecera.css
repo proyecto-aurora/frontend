@@ -1,10 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+/**************Definición de variables de color para el Header**************/
+:root {
+    --header-bg-color: #202027;
+    --header-text-color: #ffffff;
+    --header-title-color: #f5f5dc;
+    --header-title-bg-color: #161611;
+    --buscador-color: #f0e9e3;
+    --buscador-texto-color: #9f9fa0;
+}
+
+[data-theme="dark"] {
+    --header-bg-color: #36363a;
+    --header-text-color: #ffffff;
+    --header-title-color: #f5f5dc;
+    --header-title-bg-color: #36363a;
+    --buscador-color: #f0e9e3;
+    --buscador-texto-color: #9f9fa0;
+}
+
+/**************Header**************/
+.containerHeader {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    background-color: var(--header-bg-color);
+}
+
 .containerTitle {
     height: 48%;
     width: 100%;
-    background-color: #1d0834;
+    background-color: var(--header-title-bg-color);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -12,7 +41,7 @@
 }
 
 .containerTitle h1 {
-    color: #FFF;
+    color: var(--header-title-color);
     font-family: 'Aladin', sans-serif;
     font-size: 50px;
     letter-spacing: 3px;
@@ -24,6 +53,41 @@
     margin-bottom: 0%;
     width: 98%;
     height: 1%;
-    background-color: #fff;
     border-radius: 2%;
+}
+
+.containerBuscador {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5%;
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 75%;
+    padding-left: 15px;
+    background-color: var(--buscador-color);
+    border-radius: 25px;
+}
+
+.textoBuscador{
+    color: var(--buscador-texto-color);
+}
+
+.BotonCrear{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40px;
+    border: none;
+    background-color: var(--det-color);
+    border-radius: 25px;
 }

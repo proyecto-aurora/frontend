@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Cabecera from "../cabesera/cabesera";
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa"; // Iconos de ordenación
 import "../../css/areas.css";
-
+import BotonCrear from "../crear/botoncrear"
+import CrearAreaModal from "../crear/crearareamodal"
+ 
 const API_URL = "http://172.27.90.226:8000/api/area/"
-
+ 
 const Areas = ({ nombre }) => {
     const [name, setNombre] = useState(nombre);
     const [areas, setAreas] = useState([]);
@@ -14,6 +15,8 @@ const Areas = ({ nombre }) => {
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [estados, setEstados] = useState([]);
 
     const itemsPerPage = 10;
 
@@ -26,8 +29,7 @@ const Areas = ({ nombre }) => {
         { label: 'Fecha Actualización', key: 'fecha_actualizacion' },
         { label: 'Estado', key: 'estados_id_estados' },
     ];
-
-    
+  
     useEffect(() => {
         let isMounted = true;
         axios.get(API_URL)
@@ -44,11 +46,19 @@ const Areas = ({ nombre }) => {
                     setLoading(false)
                 }
             });
-        return ()=> {
-            isMounted = false
+
+            //Obtener estados
+            axios.get("http://172.27.90.226:8000/api/estados/")
+            .then(response => {
+              if (isMounted){
+                setEstados(response.data)
+              }
+            })
+        return () => {
+            isMounted = false;
         };
     }, []);
-
+ 
     const handleSort = (key) => {
         let direction = 'ascending';
         if (sortConfig.key === key && sortConfig.direction === 'ascending') {
@@ -56,27 +66,27 @@ const Areas = ({ nombre }) => {
         }
         setSortConfig({ key, direction });
     };
-
+ 
     const sortedAreas = useMemo(() => {
-        if(!sortConfig.key) return areas;
+        if (!sortConfig.key) return areas;
         return [...areas].sort((a, b) => {
             let aValue = a[sortConfig.key];
             let bValue = b[sortConfig.key];
-
+ 
             // Manejar fechas
             if (sortConfig.key.includes('fecha')) {
                 aValue = new Date(aValue);
                 bValue = new Date(bValue);
             }
-
+ 
             //Convertir los textos a minusculas para evitar errores al ordenar
-            if(typeof aValue === 'string') aValue = aValue.toLowerCase();
-            if(typeof bValue === 'string') bValue = bValue.toLowerCase();
-
+            if (typeof aValue === 'string') aValue = aValue.toLowerCase();
+            if (typeof bValue === 'string') bValue = bValue.toLowerCase();
+ 
             //Manejar datos null o undefined
             if (aValue === null || aValue === undefined) return 1;
             if (bValue === null || bValue === undefined) return -1;
-
+ 
             if (aValue < bValue) {
                 return sortConfig.direction === 'ascending' ? -1 : 1;
             }
@@ -86,26 +96,26 @@ const Areas = ({ nombre }) => {
             return 0;
         });
     }, [areas, sortConfig]);
-    
+   
     const indexOfLastArea = currentPage * itemsPerPage;
     const indexOfFirstArea = indexOfLastArea - itemsPerPage;
     const currentAreas = useMemo(() => {
         return sortedAreas.slice(indexOfFirstArea, indexOfLastArea);
     }, [sortedAreas, indexOfFirstArea, indexOfLastArea]);
-
+ 
     const totalPages = Math.ceil(areas.length / itemsPerPage);
-
+ 
     const getPaginationButtons = () => {
         const buttons = [];
         const maxButtons = 5;
         let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
         let endPage = startPage + maxButtons - 1;
-
+ 
         if (endPage > totalPages) {
             endPage = totalPages;
             startPage = Math.max(1, endPage - maxButtons + 1);
         }
-
+ 
         for (let i = startPage; i <= endPage; i++) {
             buttons.push(
                 <li key={i} className={`page-item ${currentPage === i ? 'active' : ''}`}>
@@ -115,17 +125,41 @@ const Areas = ({ nombre }) => {
                 </li>
             );
         }
-
+ 
         return buttons;
     };
-
+ 
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    // Función para abrir el modal
+    const openModal = () => {
+      setModalVisible(true);
+    };
+
+    // Función para cerrar el modal
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+
+    // Función para crear un área
+    const handleCreateArea = async (nuevaArea) => {
+        try {
+            const response = await axios.post(API_URL, nuevaArea);
+            if (response.status === 201) {
+                setAreas((prevAreas) => [...prevAreas, response.data]); // Agregar nueva área a la lista
+                closeModal(); // Cerrar el modal después de crear el área
+            }
+        } catch (error) {
+            console.error("Error al crear el área:", error);
+            setError("No se pudo crear el área. Inténtalo de nuevo.");
+        }
+    };
+ 
     return (
-        <>
+        <main className="mainContainer">
             <article className="containerFullAreas">
                 <header className="containerHeader">
                     <Cabecera nombre={nombre} />
@@ -133,8 +167,12 @@ const Areas = ({ nombre }) => {
                         <section className="buscador">
                             <span className="textoBuscador">Buscar {nombre}</span>
                         </section>
+                        <BotonCrear onClick={openModal}/>
                     </article>
                 </header>
+                {modalVisible && (
+                  <CrearAreaModal isOpen={modalVisible} onClose={closeModal} onCreate={handleCreateArea} estados={estados}/>
+                )}
                 <section className="containerList">
                     {error && (
                         <div className="alerta" role="alert">
@@ -208,8 +246,8 @@ const Areas = ({ nombre }) => {
                     </nav>
                 )}
             </article>
-        </>
+        </main>
     );
 }
-
+ 
 export default Areas

@@ -1,0 +1,11 @@
+.paginacion{
+    align-items: center;
+}
+
+.pag-ul{
+    justify-content: center;
+}
+
+.pag-number{
+    background-color: #000;
+}
