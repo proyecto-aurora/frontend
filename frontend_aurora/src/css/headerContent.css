@@ -1,4 +1,4 @@
-/* Definición de variable de color para los encabezados */
+/**************Definición de variable de color para los encabezados**************/
 :root {
     --main-bg-color: #cccfd3;
     --bg-color: #ffffff;
@@ -19,6 +19,7 @@
     --row-hover-color: #3b3b3b;
 }
 
+/**************Contenido**************/
 .mainContainer{
     background-color: var(--main-bg-color);
     height: 100%;
