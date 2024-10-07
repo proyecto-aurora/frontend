@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Cabecera from "../cabesera/cabesera";
-import TituloBuscador from "../cabesera/tituloBuscador";
 
 const Roles = ({ nombre }) => {
     const [name, setNombre] = useState(nombre)
@@ -10,7 +9,6 @@ const Roles = ({ nombre }) => {
                 <header className="containerHeader">
                     <Cabecera nombre={name} />
                     <article className="containerBuscador">
-                        <TituloBuscador nombre={name} />
                         <section className="buscador">
 
                         </section>

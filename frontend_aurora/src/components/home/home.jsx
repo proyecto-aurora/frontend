@@ -1,10 +1,12 @@
 import Banner from "../bannerDavid/banner";
 import { useState } from "react";
 import Usuarios from "../usuarios/usuarios.jsx"
-import Areas from "../areas/areas";
+import Areas from "../areas/areas.jsx";
 import Roles from "../roles/roles";
 import "../../css/cabecera.css"
+import "../../css/headerContent.css"
 import "../../css/usuarios.css"
+import "../../css/areas.css"
 
 const Home = () => {
     const [showContainer, setShowContainer] = useState(false);

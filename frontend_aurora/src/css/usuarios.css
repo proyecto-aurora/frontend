@@ -2,31 +2,3 @@
     height: 100%;
     width: 100%;
 }
-.containerHeader {
-    width: 100%;
-    height: 20%;
-    background-color: #161a23;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.containerBuscador {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.buscador {
-    height: 90%;
-    width: 72.5%;
-    background-color: #EDF0F6;
-}
-
-.containerListUsers{
-    height: 60%;
-    width: 100%;
-    background-color: #fff;
-}

@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const BotonBannerTema = ({icon}) => {
+    const [theme, setTheme] = useState('light')
+
+    useEffect(()=> {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(storedTheme);
+        document.documentElement.setAttribute('data-theme', storedTheme);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
+
     return (
-        <button className="optionContainerBtn">
-            <div className="optionContainerBtnOne">
-                <span className="material-symbols-outlined">{icon}</span>
-                <div></div>
-                <span>Tema Oscuro</span>
-                <label className="switch">
-                    <input type="checkbox" id="toggleSwitch" />
-                    <span className="slider"></span>
-                </label>
+        <button className="optionContainerBtn" onClick={toggleTheme}>
+            <div className='optionContainerBtnOne'>
+                <span className="material-symbols-outlined" style={{ marginRight: '8px' }}>
+                    {theme === 'light' ? 'dark_mode' : 'light_mode'}
+                </span>
+                {theme === 'light' ? 'Tema Oscuro' : 'Tema claro'}
             </div>
         </button>
     );
